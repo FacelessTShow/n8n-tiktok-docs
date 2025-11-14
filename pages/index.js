@@ -17,22 +17,44 @@ export default function Home() {
 
         {/* Garantia: remove qualquer margem/padding do body/html */}
         <style jsx global>{`
-          html, body {
-            margin: 0;
-            padding: 0;
-            background: #0f0c14;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            height: 100%;
-          }
-          * {
-            box-sizing: border-box;
-          }
-          #__next {
-            height: 100%;
-          }
-        `}</style>
+  /* Garantia: remove qualquer margem/padding do body/html */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0f0c14; /* fundo escuro */
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  #__next {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Seu estilo anterior também pode permanecer */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0f0c14;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  #__next {
+    height: 100%;
+  }
+`}</style>
       </Head>
 
       <div style={{
