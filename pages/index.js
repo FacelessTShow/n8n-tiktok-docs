@@ -1,3 +1,5 @@
+// pages/index.js
+
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -6,18 +8,84 @@ export default function Home() {
     <>
       <Head>
         <meta name="facebook-domain-verification" content="6stouov6id9cl37wmeyxizyaw2vj5s" />
+        <title>Automate with n8n | Pre-built Workflows for Creators & Agencies</title>
+        <meta name="description" content="Pre-built, battle-tested n8n workflows. No coding. Just import, configure, and run." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
-      <div style={{ fontFamily: 'system-ui', maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-        <h1>Automate with n8n</h1>
-        <p>Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.</p>
-        <p>No coding. Just import, configure, and run.</p>
-        <br />
-        <Link href="/workflows">
-          <a style={{ background: '#0070f3', color: 'white', padding: '0.8rem 1.5rem', borderRadius: '6px', textDecoration: 'none' }}>
-            See Available Workflows
-          </a>
-        </Link>
+      <div style={{
+        fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
+        background: '#0f0c14', // dark purple-black
+        color: '#ffffff',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem',
+        margin: 0,
+        boxSizing: 'border-box'
+      }}>
+        <div style={{
+          maxWidth: '800px',
+          textAlign: 'center',
+          padding: '2rem',
+          borderRadius: '16px',
+          background: 'linear-gradient(145deg, #1a1325, #120e1b)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)'
+        }}>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 700,
+            marginBottom: '1rem',
+            background: 'linear-gradient(90deg, #6e45e2, #88d3ce)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            Automate with n8n
+          </h1>
+
+          <p style={{
+            fontSize: '1.1rem',
+            lineHeight: '1.6',
+            marginBottom: '1.5rem',
+            color: '#cccccc'
+          }}>
+            Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.
+          </p>
+
+          <p style={{
+            fontSize: '1rem',
+            marginBottom: '2rem',
+            color: '#aaaaaa'
+          }}>
+            No coding. Just import, configure, and run.
+          </p>
+
+          <Link href="/workflows" passHref>
+            <a style={{
+              display: 'inline-block',
+              background: 'linear-gradient(90deg, #6e45e2, #88d3ce)',
+              color: 'white',
+              padding: '0.8rem 1.5rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: 600,
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              boxShadow: '0 4px 12px rgba(110, 69, 226, 0.4)',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}> 
+              See Available Workflows
+            </a>
+          </Link>
+        </div>
       </div>
     </>
   );
