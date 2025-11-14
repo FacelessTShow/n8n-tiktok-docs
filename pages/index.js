@@ -15,40 +15,37 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-        {/* Garantia: remove qualquer margem/padding do body/html */}
-        <<style jsx global>{`
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #0f0c14;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    height: 100%;
-    width: 100%;
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  #__next {
-    height: 100%;
-    width: 100%;
-  }
-
-  /* Força o fundo escuro a cobrir toda a tela */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0f0c14;
-    z-index: -1;
-  }
-`}</style>
+        <style jsx global>{`
+          html, body {
+            margin: 0;
+            padding: 0;
+            background: #0f0c14;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            height: 100%;
+            width: 100%;
+          }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+          #__next {
+            height: 100%;
+            width: 100%;
+          }
+          body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f0c14;
+            z-index: -1;
+          }
+        `}</style>
       </Head>
 
       <div style={{
@@ -62,7 +59,8 @@ export default function Home() {
         padding: '0',
         margin: '0',
         boxSizing: 'border-box',
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        position: 'relative'
       }}>
         <div style={{
           maxWidth: '800px',
@@ -73,8 +71,7 @@ export default function Home() {
           background: 'linear-gradient(145deg, #1a1325, #120e1b)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          position: 'relative'
+          border: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
           <h1 style={{
             fontSize: '2.5rem',
