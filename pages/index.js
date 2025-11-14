@@ -16,12 +16,11 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
         {/* Garantia: remove qualquer margem/padding do body/html */}
-        <style jsx global>{`
-  /* Garantia: remove qualquer margem/padding do body/html */
+        <<style jsx global>{`
   html, body {
     margin: 0;
     padding: 0;
-    background: #0f0c14; /* fundo escuro */
+    background: #0f0c14;
     color: white;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
@@ -38,21 +37,16 @@ export default function Home() {
     width: 100%;
   }
 
-  /* Seu estilo anterior também pode permanecer */
-  html, body {
-    margin: 0;
-    padding: 0;
+  /* Força o fundo escuro a cobrir toda a tela */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: #0f0c14;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    height: 100%;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  #__next {
-    height: 100%;
+    z-index: -1;
   }
 `}</style>
       </Head>
