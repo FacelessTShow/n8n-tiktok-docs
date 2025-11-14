@@ -12,13 +12,29 @@ export default function Workflows() {
           <li>Works with Creatomate, ElevenLabs, YouTube</li>
           <li>Handles 4 animals + style per batch</li>
         </ul>
-        <p><strong>Price:</strong> R$149 (DIY) | R$399 (installed + support)</p>
-        <a href="/contact?workflow=ai-shorts" style={{ background: '#0070f3', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none', display: 'inline-block', marginTop: '0.5rem' }}>
-          Get This Workflow
+
+        <h3 style={{ marginTop: '1.5rem' }}>Option 1: DIY (R$149)</h3>
+        <p>You get: .json file + PDF guide + 1 email support</p>
+        <a 
+          href="https://mpago.la/2dqTLmW" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ display: 'inline-block', background: '#4ade80', color: 'black', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none' }}
+        >
+          💳 Pay with Pix / Credit Card (DIY)
+        </a>
+
+        <h3 style={{ marginTop: '1.5rem' }}>Option 2: Full Setup (R$399)</h3>
+        <p>I install it on your n8n + 1h training call</p>
+        <a 
+          href="https://mpago.la/21PQawj" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ display: 'inline-block', background: '#2563eb', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none' }}
+        >
+          🛠️ Pay for Full Setup + Support
         </a>
       </div>
-
-      {/* Adicione mais workflows aqui */}
 
       <p><a href="/">← Back to home</a></p>
     </div>

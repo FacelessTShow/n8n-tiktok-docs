@@ -1,26 +1,49 @@
-// pages/workflows.js
-export default function Workflows() {
+// pages/contact.js
+import { useRouter } from 'next/router';
+
+export default function Contact() {
+  const router = useRouter();
+  const workflow = router.query.workflow || 'general';
+
   return (
-    <div style={{ fontFamily: 'system-ui', maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-      <h1>Workflows</h1>
+    <div style={{ fontFamily: 'system-ui', maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
+      <h1>Get Your Workflow</h1>
       
-      <div style={{ border: '1px solid #eee', borderRadius: '8px', padding: '1.5rem', marginBottom: '2rem' }}>
-        <h2>AI Shorts Automator</h2>
-        <p>Generates full YouTube Shorts/TikToks from a Google Sheet:</p>
-        <ul>
-          <li>AI image → AI video → AI voice → auto-upload</li>
-          <li>Works with Creatomate, ElevenLabs, YouTube</li>
-          <li>Handles 4 animals + style per batch</li>
-        </ul>
-        <p><strong>Price:</strong> R$149 (DIY) | R$399 (installed + support)</p>
-        <a href="/contact?workflow=ai-shorts" style={{ background: '#0070f3', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none', display: 'inline-block', marginTop: '0.5rem' }}>
-          Get This Workflow
+      <p>
+        You selected: <strong>
+          {workflow === 'ai-shorts' ? 'AI Shorts Automator' : 'General Inquiry'}
+        </strong>
+      </p>
+      
+      <p>Choose your option:</p>
+      
+      <div style={{ marginTop: '1.5rem' }}>
+        <h3>1. DIY (R$149)</h3>
+        <p>You get: .json file + PDF guide + 1 email support</p>
+        <a 
+          href="https://pag.ae/your-pagseguro-link" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ display: 'inline-block', background: '#4ade80', color: 'black', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none' }}
+        >
+          Pay with Pix / Credit Card
         </a>
       </div>
 
-      {/* Adicione mais workflows aqui */}
+      <div style={{ marginTop: '1.5rem' }}>
+        <h3>2. Full Setup (R$399)</h3>
+        <p>I install it on your n8n + 1h training call</p>
+        <a 
+          href="https://wa.me/message/JAWFDTQY5XZ3J1?text=Hi! I want the full setup for AI Shorts Automator." 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ display: 'inline-block', background: '#2563eb', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none' }}
+        >
+          Contact via WhatsApp
+        </a>
+      </div>
 
-      <p><a href="/">← Back to home</a></p>
+      <p style={{ marginTop: '2rem' }}><a href="/workflows">← See all workflows</a></p>
     </div>
   );
 }
