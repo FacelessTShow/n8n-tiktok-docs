@@ -14,29 +14,51 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+        {/* Garantia: remove qualquer margem/padding do body/html */}
+        <style jsx global>{`
+          html, body {
+            margin: 0;
+            padding: 0;
+            background: #0f0c14;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            height: 100%;
+          }
+          * {
+            box-sizing: border-box;
+          }
+          #__next {
+            height: 100%;
+          }
+        `}</style>
       </Head>
 
       <div style={{
-        fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
-        background: '#0f0c14', // dark purple-black
+        fontFamily: 'Inter, system-ui, sans-serif',
+        background: '#0f0c14',
         color: '#ffffff',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem',
-        margin: 0,
-        boxSizing: 'border-box'
+        padding: '0',
+        margin: '0',
+        boxSizing: 'border-box',
+        overflowX: 'hidden'
       }}>
         <div style={{
           maxWidth: '800px',
+          width: '90%',
           textAlign: 'center',
           padding: '2rem',
           borderRadius: '16px',
           background: 'linear-gradient(145deg, #1a1325, #120e1b)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          position: 'relative'
         }}>
           <h1 style={{
             fontSize: '2.5rem',
