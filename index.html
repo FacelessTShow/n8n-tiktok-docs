@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="facebook-domain-verification" content="6stouov6id9cl37wmeyxizyaw2vj5s" />
+  <title>Automate with n8n | Pre-built Workflows for Creators & Agencies</title>
+  <meta name="description" content="Pre-built, battle-tested n8n workflows. No coding. Just import, configure, and run." />
+
+  <!-- Fonte Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos globais -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0f0c14;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .container {
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 16px;
+      background: #0f0c14;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #cccccc;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
+      cursor: pointer;
+      margin: 0.5rem 0;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    /* Fundo animado */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fundo animado de partículas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Conteúdo principal -->
+  <div class="container">
+    <h1>Automate with n8n</h1>
+    <p>Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.</p>
+    <p>No coding. Just import, configure, and run.</p>
+
+    <!-- Botão DIY -->
+    <a href="https://mpago.la/2dqTLmW" class="btn">Option 1: DIY (R$149)</a>
+    <p>You get: .json file + PDF guide + 1 email support</p>
+
+    <!-- Botão Full Setup -->
+    <a href="https://mpago.la/2dqTLmW" class="btn">Option 2: Full Setup (R$399)</a>
+    <p>I install it on your n8n + 1h training call</p>
+
+    <!-- Contato via WhatsApp -->
+    <a href="https://wa.me/message/JAWFDTQY5XZ3J1?text=Hi! I want the full setup for AI Shorts Automator." class="btn" style="background: linear-gradient(90deg, #25D366, #128C7E);">Contact me on WhatsApp</a>
+  </div>
+
+  <!-- Script das partículas -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    // Redimensiona canvas
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Configuração das partículas
+    const particleCount = 70;
+    const particles = [];
+    const particleProps = {
+      radius: { min: 1.2, max: 2.5 },
+      speed: { min: 0.1, max: 0.6 },
+      primaryColor: '#88d3ce',
+      secondaryColor: '#6e45e2',
+      connectDistance: 120,
+      connectionOpacity: 0.25,
+    };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * particleProps.speed.max;
+        this.vy = (Math.random() - 0.5) * particleProps.speed.max;
+        this.radius = Math.random() * (particleProps.radius.max - particleProps.radius.min) + particleProps.radius.min;
+        this.color = Math.random() > 0.5 ? particleProps.primaryColor : particleProps.secondaryColor;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    // Inicializa partículas
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    // Animação
+    function animate() {
+      ctx.fillStyle = '#0f0c14';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => p.update());
+      particles.forEach(p => p.draw());
+
+      ctx.strokeStyle = `rgba(104, 69, 226, ${particleProps.connectionOpacity})`;
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < particleProps.connectDistance) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
