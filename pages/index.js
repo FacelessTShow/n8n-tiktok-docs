@@ -32,13 +32,26 @@ export default function Home() {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
           }
+          /* Força margem 0 no body com prioridade máxima */
           body {
             margin: 0 !important;
             padding: 0 !important;
+            position: relative;
+          }
+          /* Garante que o canvas cubra toda a tela */
+          .particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointerEvents: none;
+            background: #0f0c14;
           }
         `}</style>
 
-        {/* Força reset via JS (garantia final contra user agent margin) */}
+        {/* Força reset via JavaScript */}
         <script dangerouslySetInnerHTML={{ __html: `
           document.body.style.margin = '0';
           document.body.style.padding = '0';
