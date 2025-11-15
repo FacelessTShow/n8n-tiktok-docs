@@ -15,7 +15,6 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-        {/* Força reset global */}
         <style jsx global>{`
           *,
           *::before,
@@ -32,11 +31,6 @@ export default function Home() {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
           }
-          /* Força margem 0 no body */
-          body {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
           body::before {
             content: '';
             position: fixed;
@@ -49,13 +43,13 @@ export default function Home() {
           }
         `}</style>
 
-        {/* Estilo inline no body (garantia máxima) */}
-        <style jsx>{`
-          body {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-        `}</style>
+        {/* Força reset da margem via JavaScript */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          document.body.style.margin = '0';
+          document.body.style.padding = '0';
+          document.documentElement.style.margin = '0';
+          document.documentElement.style.padding = '0';
+        ` }} />
       </Head>
 
       <div style={{
