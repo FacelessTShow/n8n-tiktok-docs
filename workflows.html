@@ -3,259 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="facebook-domain-verification" content="6stouov6id9cl37wmeyxizyaw2vj5s" />
-  <title>n8n Workflows | AI Shorts Automator</title>
-  <meta name="description" content="Automate TikTok Reels with battle-tested n8n workflows. No coding required." />
-
-  <!-- Fonte Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Workflow Preview</title>
 
   <!-- Estilos globais -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       background: #0f0c14;
       color: white;
       font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      padding-bottom: 4rem;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1.5rem 2rem;
-    }
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #6e45e2, #88d3ce);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header p {
-      color: #bbbbbb;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .workflows {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .workflow-card {
-      position: relative;
-      background: rgba(26, 19, 37, 0.6);
-      border: 1px solid rgba(110, 69, 226, 0.3);
-      border-radius: 16px;
-      padding: 1.8rem;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    .workflow-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(110, 69, 226, 0.4);
-    }
-
-    .workflow-card h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-
-    .workflow-card p {
-      color: #cccccc;
-      margin-bottom: 1.4rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .preview-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 16px;
-      display: none;
       justify-content: center;
       align-items: center;
-      z-index: 10;
-      padding: 2rem;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      width: 300px;
+      height: 500px;
+      background: rgba(26, 19, 37, 0.6);
+      border-radius: 16px;
+      position: relative;
       overflow: hidden;
-    }
-
-    .workflow-card:hover .preview-container {
       display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(110, 69, 226, 0.3);
     }
 
-    .preview-image {
-      max-width: 100%;
-      max-height: 80vh;
+    /* Área 5% → 50%: Slider de imagens */
+    .slider-area {
+      height: 45%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(110, 69, 226, 0.3);
+      border-radius: 16px;
+      background: rgba(15, 12, 20, 0.8);
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      max-width: 90%;
+      max-height: 80%;
       object-fit: contain;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease;
     }
 
-    .preview-image:hover {
-      transform: scale(1.02);
-    }
-
-    .node-preview {
+    /* Área 50% → 60%: Nome do workflow */
+    .name-area {
+      height: 10%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
     }
 
-    .node-preview img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.2s ease;
+    /* Área 60% → 85%: Descrição do workflow */
+    .desc-area {
+      height: 25%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #cccccc;
+      text-align: center;
+      padding: 0.5rem;
     }
 
-    .node-preview img:hover {
-      transform: scale(1.1);
-      border-color: #6e45e2;
+    /* Área 85% → 95%: Botões */
+    .btn-area {
+      height: 10%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem;
     }
 
-    .btn {
+    .btn-small {
       display: inline-block;
       background: linear-gradient(90deg, #6e45e2, #88d3ce);
       color: white;
-      padding: 0.8rem 1.8rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
+      box-shadow: 0 2px 6px rgba(110, 69, 226, 0.3);
       cursor: pointer;
     }
 
-    .btn:hover {
-      transform: scale(1.04);
-      box-shadow: 0 6px 16px rgba(110, 69, 226, 0.4);
+    .btn-small:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 8px rgba(110, 69, 226, 0.4);
     }
 
     .btn-whatsapp {
       background: linear-gradient(90deg, #25D366, #128C7E);
     }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    a {
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>n8n Workflows</h1>
-    <p>Pre-built automation flows to generate and post AI-powered Reels automatically on TikTok.</p>
-  </header>
-
-  <div class="workflows">
-    <!-- Workflow 1 -->
-    <div class="workflow-card">
-      <h2>AI Shorts Generator</h2>
-      <p>Auto-generate TikTok Reels from prompts using AI models.</p>
-      <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
-
-      <!-- Preview Hover -->
-      <div class="preview-container">
-        <div style="text-align: center;">
-          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+1" alt="AI Shorts Generator Preview" class="preview-image" />
-          <div class="node-preview">
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
-          </div>
+  <div class="card">
+    <!-- Área 5% → 50%: Slider de imagens -->
+    <div class="slider-area">
+      <div class="slider-container" id="slider">
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+1" alt="Image 1" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+2" alt="Image 2" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+3" alt="Image 3" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+4" alt="Image 4" />
         </div>
       </div>
     </div>
 
-    <!-- Workflow 2 -->
-    <div class="workflow-card">
-      <h2>TikTok Auto-Poster</h2>
-      <p>Schedule and publish Reels automatically to your TikTok profile.</p>
-      <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
-
-      <!-- Preview Hover -->
-      <div class="preview-container">
-        <div style="text-align: center;">
-          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+2" alt="TikTok Auto-Poster Preview" class="preview-image" />
-          <div class="node-preview">
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
-          </div>
-        </div>
-      </div>
+    <!-- Área 50% → 60%: Nome do workflow -->
+    <div class="name-area">
+      NOME DO WORKFLOW
     </div>
 
-    <!-- Workflow 3 -->
-    <div class="workflow-card">
-      <h2>Thumbnail Generator</h2>
-      <p>Create eye-catching thumbnails for your Reels using AI templates.</p>
-      <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
-
-      <!-- Preview Hover -->
-      <div class="preview-container">
-        <div style="text-align: center;">
-          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+3" alt="Thumbnail Generator Preview" class="preview-image" />
-          <div class="node-preview">
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
-            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
-          </div>
-        </div>
-      </div>
+    <!-- Área 60% → 85%: Descrição do workflow -->
+    <div class="desc-area">
+      BREVE DESCRIÇÃO DO FLOW
     </div>
 
-    <!-- Contato -->
-    <div class="workflow-card">
-      <h2>Need Help?</h2>
-      <p>Have questions before buying? Message me directly on WhatsApp.</p>
-      <a 
-        href="https://wa.me/message/JAWFDTQY5XZ3J1?text=Hi! I want the full setup for AI Shorts Automator." 
-        class="btn btn-whatsapp"
-      >
-        Contact on WhatsApp
-      </a>
+    <!-- Área 85% → 95%: Botões -->
+    <div class="btn-area">
+      <a href="#" class="btn-small">Starter Pack R$149</a>
+      <a href="#" class="btn-small">Full Setup R$399</a>
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 AI Shorts Automator. Built with n8n.</p>
-  </footer>
+  <!-- Script do slider animado -->
+  <script>
+    const slider = document.getElementById('slider');
+    const slides = Array.from(slider.children);
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const slideWidth = slider.offsetWidth;
+      slider.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    // Inicia o slider
+    setInterval(nextSlide, 3000); // 3 segundos por imagem
+
+    // Ajusta o slider quando a janela é redimensionada
+    window.addEventListener('resize', () => {
+      showSlide(currentIndex);
+    });
+  </script>
 </body>
 </html>
