@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Workflow Preview</title>
+  <title>Workflows Gallery</title>
 
-  <!-- Estilos globais -->
   <style>
     body {
       background: #0f0c14;
@@ -19,53 +18,33 @@
       padding: 0;
     }
 
-    .card {
-      width: 255px; /* 300px × 0.85 */
-      height: 425px; /* 500px × 0.85 */
-      background: rgba(26, 19, 37, 0.6);
-      border-radius: 14px; /* 16px × 0.85 ≈ 14px */
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 0 17px rgba(110, 69, 226, 0.3); /* 20px × 0.85 */
-    }
-
-    /* Área 5% → 50%: Slider de imagens */
-    .slider-area {
-      height: 45%;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(110, 69, 226, 0.3);
-      border-radius: 14px;
-      background: rgba(15, 12, 20, 0.8);
-    }
-
     .slider-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .slide {
-      width: 100%;
-      height: 100%;
+      position: relative;
+      width: 255px;
+      height: 425px;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-shrink: 0;
     }
 
-    .slide img {
-      max-width: 90%;
-      max-height: 80%;
-      object-fit: contain;
-      border-radius: 7px; /* 8px × 0.85 */
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5); /* ajustado */
+    .card {
+      width: 255px;
+      height: 425px;
+      background: rgba(26, 19, 37, 0.6);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 17px rgba(110, 69, 226, 0.3);
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
-    /* Área 50% → 60%: Nome do workflow */
+    .slider-area { height: 45%; overflow: hidden; border: 1px solid rgba(110, 69, 226, 0.3); border-radius: 14px; background: rgba(15, 12, 20, 0.8); }
+    .slide-img { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+    .slide-img img { max-width: 90%; max-height: 80%; border-radius: 7px; box-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+
     .name-area {
       height: 10%;
       background: rgba(26, 19, 37, 0.6);
@@ -75,12 +54,11 @@
       justify-content: center;
       font-weight: bold;
       color: white;
+      font-size: 0.95rem;
+      padding: 0.4rem;
       text-align: center;
-      padding: 0.4rem; /* 0.5rem × 0.85 */
-      font-size: 0.95rem; /* ligeiramente reduzido */
     }
 
-    /* Área 60% → 85%: Descrição do workflow */
     .desc-area {
       height: 25%;
       background: rgba(26, 19, 37, 0.6);
@@ -88,109 +66,125 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem; /* 0.9rem × 0.85 */
+      font-size: 0.8rem;
       color: #cccccc;
       text-align: center;
       padding: 0.4rem;
     }
 
-    /* Área 85% → 95%: Botões */
     .btn-area {
       height: 10%;
       background: rgba(26, 19, 37, 0.6);
       border-top: 1px solid rgba(110, 69, 226, 0.3);
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+      gap: 0.3rem;
       align-items: center;
       padding: 0.4rem;
     }
 
     .btn-small {
-      display: inline-block;
-      background: linear-gradient(90deg, #6e45e2, #88d3ce);
-      color: white;
-      padding: 0.4rem 0;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.8rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 2px 5px rgba(110, 69, 226, 0.3);
-      cursor: pointer;
-      text-align: center;
-      line-height: 1.3;
-      width: 100%;
-      max-width: calc(100% - 15%);
-      margin: 0 7.5%;
-      height: 34px; /* 40px × 0.85 */
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(90deg, #6e45e2, #88d3ce);
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 1.3;
+      width: 85%; /* ← 15% menor na largura */
+      height: 34px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(110, 69, 226, 0.3);
+      transition: transform 0.2s ease;
+      text-decoration: none; /* ← sem underline */
     }
 
     .btn-small:hover {
       transform: scale(1.05);
       box-shadow: 0 3px 7px rgba(110, 69, 226, 0.4);
     }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(110, 69, 226, 0.3);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 1.0rem;
+      cursor: pointer;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+    .nav-arrow:hover { background: rgba(110, 69, 226, 0.6); }
+    .arrow-left { left: -40px; }
+    .arrow-right { right: -40px; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <!-- Área 5% → 50%: Slider de imagens -->
-    <div class="slider-area">
-      <div class="slider-container" id="slider">
-        <div class="slide">
-          <img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=Image+1" alt="Image 1" />
+  <div class="slider-container">
+    <button class="nav-arrow arrow-left" onclick="prevSlide()">‹</button>
+    <div class="card-wrapper">
+      <div class="card" id="card-1">
+        <div class="slider-area"><div class="slide-img"><img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=AI+Shorts" alt="AI Shorts Generator" /></div></div>
+        <div class="name-area">AI Shorts Generator</div>
+        <div class="desc-area">Auto-generate TikTok Reels from prompts using AI models.</div>
+        <div class="btn-area">
+          <a href="https://mpago.la/2dqTLmW" class="btn-small">Starter Pack<br>R$149</a>
+          <a href="https://mpago.la/21PQawj" class="btn-small">Full Setup<br>R$399</a>
         </div>
-        <div class="slide">
-          <img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=Image+2" alt="Image 2" />
+      </div>
+
+      <div class="card" id="card-2" style="display: none;">
+        <div class="slider-area"><div class="slide-img"><img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=TikTok+Auto" alt="TikTok Auto-Poster" /></div></div>
+        <div class="name-area">TikTok Auto-Poster</div>
+        <div class="desc-area">Schedule and publish Reels automatically to your TikTok profile.</div>
+        <div class="btn-area">
+          <a href="https://mpago.la/2dqTLmW" class="btn-small">Starter Pack<br>R$149</a>
+          <a href="https://mpago.la/21PQawj" class="btn-small">Full Setup<br>R$399</a>
         </div>
-        <div class="slide">
-          <img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=Image+3" alt="Image 3" />
-        </div>
-        <div class="slide">
-          <img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=Image+4" alt="Image 4" />
+      </div>
+
+      <div class="card" id="card-3" style="display: none;">
+        <div class="slider-area"><div class="slide-img"><img src="https://via.placeholder.com/255x170/1a1325/ffffff?text=Thumbnails" alt="Thumbnail Generator" /></div></div>
+        <div class="name-area">Thumbnail Generator</div>
+        <div class="desc-area">Create eye-catching thumbnails for your Reels using AI templates.</div>
+        <div class="btn-area">
+          <a href="https://mpago.la/2dqTLmW" class="btn-small">Starter Pack<br>R$149</a>
+          <a href="https://mpago.la/21PQawj" class="btn-small">Full Setup<br>R$399</a>
         </div>
       </div>
     </div>
-
-    <!-- Área 50% → 60%: Nome do workflow -->
-    <div class="name-area">
-      NOME DO WORKFLOW
-    </div>
-
-    <!-- Área 60% → 85%: Descrição do workflow -->
-    <div class="desc-area">
-      BREVE DESCRIÇÃO DO FLOW
-    </div>
-
-    <!-- Área 85% → 95%: Botões -->
-    <div class="btn-area">
-      <a href="https://mpago.la/2dqTLmW" class="btn-small">Starter Pack<br>R$149</a>
-      <a href="https://mpago.la/21PQawj" class="btn-small">Full Setup<br>R$399</a>
-    </div>
+    <button class="nav-arrow arrow-right" onclick="nextSlide()">›</button>
   </div>
 
-  <!-- Script do slider animado -->
   <script>
-    const slider = document.getElementById('slider');
-    const slides = Array.from(slider.children);
     let currentIndex = 0;
+    const cards = document.querySelectorAll('.card');
 
-    function showSlide(index) {
-      const slideWidth = slider.offsetWidth;
-      slider.style.transform = `translateX(-${index * slideWidth}px)`;
+    function showCard(index) {
+      cards.forEach((card, i) => {
+        card.style.display = i === index ? 'flex' : 'none';
+      });
     }
 
     function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
+      currentIndex = (currentIndex + 1) % cards.length;
+      showCard(currentIndex);
     }
 
-    setInterval(nextSlide, 3000);
-    window.addEventListener('resize', () => {
-      showSlide(currentIndex);
-    });
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      showCard(currentIndex);
+    }
+    showCard(0);
   </script>
 </body>
 </html>
