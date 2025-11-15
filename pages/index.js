@@ -15,6 +15,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+        {/* Força reset global */}
         <style jsx global>{`
           *,
           *::before,
@@ -31,9 +32,10 @@ export default function Home() {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
           }
-          /* Correção crítica: força margem 0 no body */
+          /* Força margem 0 no body */
           body {
             margin: 0 !important;
+            padding: 0 !important;
           }
           body::before {
             content: '';
@@ -44,6 +46,14 @@ export default function Home() {
             height: 100vh;
             background: #0f0c14;
             z-index: -1;
+          }
+        `}</style>
+
+        {/* Estilo inline no body (garantia máxima) */}
+        <style jsx>{`
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
           }
         `}</style>
       </Head>
