@@ -49,30 +49,33 @@ export default function Home() {
       </Head>
 
       <div style={{
-        fontFamily: 'Inter, system-ui, sans-serif',
-        background: '#0f0c14',
-        color: '#ffffff',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0',
-        margin: '0',
-        boxSizing: 'border-box',
-        overflowX: 'hidden',
-        position: 'relative'
+  fontFamily: 'Inter, system-ui, sans-serif',
+  background: '#0f0c14',
+  color: '#ffffff',
+  height: '100vh', // Alterado de minHeight para height
+  width: '100vw',  // Garante que ocupa toda a largura
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '0',
+  margin: '0',
+  boxSizing: 'border-box',
+  overflowX: 'hidden',
+  position: 'relative'
+}}>
       }}>
-        <div style={{
-          maxWidth: '800px',
-          width: '90%',
-          textAlign: 'center',
-          padding: '2rem',
-          borderRadius: '16px',
-          background: 'linear-gradient(145deg, #1a1325, #120e1b)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
+       <div style={{
+  maxWidth: '800px',
+  width: '90%',
+  textAlign: 'center',
+  padding: '2rem',
+  borderRadius: '16px',
+  background: 'linear-gradient(145deg, #1a1325, #120e1b)',
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  margin: '0 auto' // Garante centralização sem margens extras
+}}>
           <h1 style={{
             fontSize: '2.5rem',
             fontWeight: 700,
