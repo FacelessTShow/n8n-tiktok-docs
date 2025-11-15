@@ -24,10 +24,11 @@
       color: white;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       position: relative;
     }
     .container {
@@ -38,6 +39,7 @@
       border-radius: 16px;
       background: #0f0c14;
       z-index: 1;
+      margin-bottom: 3rem;
     }
     h1 {
       font-size: 2.5rem;
@@ -80,6 +82,47 @@
       z-index: -1;
       pointer-events: none;
     }
+
+    /* Rodapé */
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #0a0710;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      color: #bbbbbb;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-icons a {
+      color: #cccccc;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .social-icons a:hover {
+      color: #6e45e2;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-links a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: #6e45e2;
+    }
   </style>
 </head>
 <body>
@@ -95,6 +138,25 @@
     <!-- Botão único: View Gallery -->
     <a href="/workflows.html" class="btn">View All Automations</a>
   </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="social-icons">
+      <!-- Telegram -->
+      <a href="https://t.me/SEU_TELEGRAM" target="_blank" title="Telegram">✉️</a>
+      <!-- YouTube -->
+      <a href="https://youtube.com/@SEU_CANAL" target="_blank" title="YouTube">▶️</a>
+      <!-- Facebook -->
+      <a href="https://facebook.com/SEU_PERFIL" target="_blank" title="Facebook">📘</a>
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@SEU_PERFIL" target="_blank" title="TikTok">🎵</a>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Notice</a>
+      <a href="/cookie-policy.html">Cookie Policy</a>
+    </div>
+    <div>© 2025 AI Shorts Automator</div>
+  </footer>
 
   <!-- Script das partículas -->
   <script>
