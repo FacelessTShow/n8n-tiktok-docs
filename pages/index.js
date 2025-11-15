@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import Link from 'next/link';
+import Particles from '../components/Particles';
 
 export default function Home() {
   return (
@@ -31,19 +32,13 @@ export default function Home() {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
           }
-          body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #0f0c14;
-            z-index: -1;
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
           }
         `}</style>
 
-        {/* Força reset da margem via JavaScript */}
+        {/* Força reset via JS (garantia final contra user agent margin) */}
         <script dangerouslySetInnerHTML={{ __html: `
           document.body.style.margin = '0';
           document.body.style.padding = '0';
@@ -51,6 +46,9 @@ export default function Home() {
           document.documentElement.style.padding = '0';
         ` }} />
       </Head>
+
+      {/* Fundo animado de partículas */}
+      <Particles />
 
       <div style={{
         fontFamily: 'Inter, system-ui, sans-serif',
@@ -64,7 +62,8 @@ export default function Home() {
         margin: '0',
         boxSizing: 'border-box',
         overflowX: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
           maxWidth: '800px',
