@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="facebook-domain-verification" content="6stouov6id9cl37wmeyxizyaw2vj5s" />
-  <title>Automate with n8n | Pre-built Workflows for Creators & Agencies</title>
+  <title>Automate with n8n | Pre-Built Workflows for Creators & Agencies</title>
   <meta name="description" content="Pre-built, battle-tested n8n workflows. No coding. Just import, configure, and run." />
 
   <!-- Fonte Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Estilos globais -->
@@ -58,19 +58,19 @@
       display: inline-block;
       background: linear-gradient(90deg, #6e45e2, #88d3ce);
       color: white;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: transform 0.2s ease;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
       cursor: pointer;
-      margin: 0.5rem 0;
     }
     .btn:hover {
       transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(110, 69, 226, 0.4);
     }
-    /* Fundo animado */
     canvas {
       position: fixed;
       top: 0;
@@ -92,16 +92,8 @@
     <p>Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.</p>
     <p>No coding. Just import, configure, and run.</p>
 
-    <!-- Botão DIY -->
-    <a href="https://mpago.la/2dqTLmW" class="btn">Option 1: DIY (R$149)</a>
-    <p>You get: .json file + PDF guide + 1 email support</p>
-
-    <!-- Botão Full Setup -->
-    <a href="https://mpago.la/2dqTLmW" class="btn">Option 2: Full Setup (R$399)</a>
-    <p>I install it on your n8n + 1h training call</p>
-
-    <!-- Contato via WhatsApp -->
-    <a href="https://wa.me/message/JAWFDTQY5XZ3J1?text=Hi! I want the full setup for AI Shorts Automator." class="btn" style="background: linear-gradient(90deg, #25D366, #128C7E);">Contact me on WhatsApp</a>
+    <!-- Botão único: View Gallery -->
+    <a href="/workflows.html" class="btn">View Gallery</a>
   </div>
 
   <!-- Script das partículas -->
@@ -109,7 +101,6 @@
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
 
-    // Redimensiona canvas
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -117,7 +108,6 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Configuração das partículas
     const particleCount = 70;
     const particles = [];
     const particleProps = {
@@ -154,12 +144,10 @@
       }
     }
 
-    // Inicializa partículas
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
 
-    // Animação
     function animate() {
       ctx.fillStyle = '#0f0c14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
