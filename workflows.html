@@ -55,12 +55,20 @@
     }
 
     .workflow-card {
+      position: relative;
       background: rgba(26, 19, 37, 0.6);
-      border: 1px solid rgba(110, 69, 226, 0.2);
+      border: 1px solid rgba(110, 69, 226, 0.3);
       border-radius: 16px;
       padding: 1.8rem;
       text-align: center;
       backdrop-filter: blur(10px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .workflow-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(110, 69, 226, 0.4);
     }
 
     .workflow-card h2 {
@@ -76,6 +84,61 @@
       line-height: 1.6;
     }
 
+    .preview-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 16px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .workflow-card:hover .preview-container {
+      display: flex;
+    }
+
+    .preview-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .preview-image:hover {
+      transform: scale(1.02);
+    }
+
+    .node-preview {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .node-preview img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .node-preview img:hover {
+      transform: scale(1.1);
+      border-color: #6e45e2;
+    }
+
     .btn {
       display: inline-block;
       background: linear-gradient(90deg, #6e45e2, #88d3ce);
@@ -84,10 +147,10 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
       cursor: pointer;
-      font-size: 1rem;
     }
 
     .btn:hover {
@@ -118,18 +181,64 @@
   </header>
 
   <div class="workflows">
-    <!-- Plano Básico -->
+    <!-- Workflow 1 -->
     <div class="workflow-card">
-      <h2>Starter Pack (R$149)</h2>
-      <p>You get: Workflow (.json) + Setup Guide (PDF) + 1 email support</p>
+      <h2>AI Shorts Generator</h2>
+      <p>Auto-generate TikTok Reels from prompts using AI models.</p>
       <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
+
+      <!-- Preview Hover -->
+      <div class="preview-container">
+        <div style="text-align: center;">
+          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+1" alt="AI Shorts Generator Preview" class="preview-image" />
+          <div class="node-preview">
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Plano Completo -->
+    <!-- Workflow 2 -->
     <div class="workflow-card">
-      <h2>Full Setup (R$399)</h2>
-      <p>I install it on your n8n + 1-hour training call + lifetime updates</p>
-      <a href="https://mpago.la/2dqTLmW" class="btn">Get Full Access</a>
+      <h2>TikTok Auto-Poster</h2>
+      <p>Schedule and publish Reels automatically to your TikTok profile.</p>
+      <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
+
+      <!-- Preview Hover -->
+      <div class="preview-container">
+        <div style="text-align: center;">
+          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+2" alt="TikTok Auto-Poster Preview" class="preview-image" />
+          <div class="node-preview">
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow 3 -->
+    <div class="workflow-card">
+      <h2>Thumbnail Generator</h2>
+      <p>Create eye-catching thumbnails for your Reels using AI templates.</p>
+      <a href="https://mpago.la/2dqTLmW" class="btn">Get Started</a>
+
+      <!-- Preview Hover -->
+      <div class="preview-container">
+        <div style="text-align: center;">
+          <img src="https://via.placeholder.com/800x450/1a1325/ffffff?text=Workflow+Preview+3" alt="Thumbnail Generator Preview" class="preview-image" />
+          <div class="node-preview">
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+1" alt="Node 1" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+2" alt="Node 2" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+3" alt="Node 3" />
+            <img src="https://via.placeholder.com/80/333333/ffffff?text=Node+4" alt="Node 4" />
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Contato -->
