@@ -91,7 +91,7 @@ export default function Home() {
             marginBottom: '1.5rem',
             color: '#cccccc'
           }}>
-            Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.
+            Pre-built, battle-tested n8n workflows for Creators, Agencies, and Solopreneurs.
           </p>
 
           <p style={{
