@@ -31,6 +31,10 @@ export default function Home() {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
           }
+          /* Correção crítica: força margem 0 no body */
+          body {
+            margin: 0 !important;
+          }
           body::before {
             content: '';
             position: fixed;
@@ -64,9 +68,9 @@ export default function Home() {
           textAlign: 'center',
           padding: '2rem',
           borderRadius: '16px',
-          background: '#0f0c14', // ← mesmo tom do fundo do body
-          boxShadow: 'none',     // ← removido
-          border: 'none',        // ← removido
+          background: '#0f0c14',
+          boxShadow: 'none',
+          border: 'none',
           margin: '0 auto'
         }}>
           <h1 style={{
