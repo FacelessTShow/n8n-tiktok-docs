@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -108,7 +109,7 @@
       display: inline-block;
       background: linear-gradient(90deg, #6e45e2, #88d3ce);
       color: white;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
@@ -116,10 +117,12 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 2px 6px rgba(110, 69, 226, 0.3);
       cursor: pointer;
-      text-align: center; /* Centraliza o texto dentro do botão */
-      line-height: 1.4; /* Ajusta a altura da linha para evitar quebra */
-      min-width: 120px; /* Garante que todos os botões tenham a mesma largura */
-      height: 40px; /* Garante que todos os botões tenham a mesma altura */
+      text-align: center;
+      line-height: 1.4;
+      width: 100%; /* Largura total do container */
+      max-width: calc(100% - 15%); /* Corta 15% da largura total */
+      margin: 0 7.5%; /* Margem de 7.5% de cada lado */
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
