@@ -3,178 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="facebook-domain-verification" content="6stouov6id9cl37wmeyxizyaw2vj5s" />
-  <title>Automate with n8n | Pre-Built Workflows for Creators & Agencies</title>
-  <meta name="description" content="Pre-built, battle-tested n8n workflows. No coding. Just import, configure, and run." />
-
-  <!-- Fonte Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Workflow Preview</title>
 
   <!-- Estilos globais -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       background: #0f0c14;
       color: white;
       font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      width: 300px;
+      height: 500px;
+      background: rgba(26, 19, 37, 0.6);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(110, 69, 226, 0.3);
+    }
+
+    /* Área 5% → 50%: Slider de imagens */
+    .slider-area {
+      height: 45%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(110, 69, 226, 0.3);
+      border-radius: 16px;
+      background: rgba(15, 12, 20, 0.8);
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Área 50% → 60%: Nome do workflow */
+    .name-area {
+      height: 10%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-    }
-    .container {
-      max-width: 800px;
-      width: 90%;
+      font-weight: bold;
+      color: white;
       text-align: center;
-      padding: 2rem;
-      border-radius: 16px;
-      background: #0f0c14;
-      z-index: 1;
+      padding: 0.5rem;
     }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #6e45e2, #88d3ce);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+
+    /* Área 60% → 85%: Descrição do workflow */
+    .desc-area {
+      height: 25%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
       color: #cccccc;
+      text-align: center;
+      padding: 0.5rem;
     }
-    .btn {
+
+    /* Área 85% → 95%: Botões */
+    .btn-area {
+      height: 10%;
+      background: rgba(26, 19, 37, 0.6);
+      border-top: 1px solid rgba(110, 69, 226, 0.3);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem;
+    }
+
+    .btn-small {
       display: inline-block;
       background: linear-gradient(90deg, #6e45e2, #88d3ce);
       color: white;
-      padding: 0.8rem 1.8rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
+      box-shadow: 0 2px 6px rgba(110, 69, 226, 0.3);
       cursor: pointer;
     }
-    .btn:hover {
+
+    .btn-small:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(110, 69, 226, 0.4);
+      box-shadow: 0 3px 8px rgba(110, 69, 226, 0.4);
     }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
+
+    .btn-whatsapp {
+      background: linear-gradient(90deg, #25D366, #128C7E);
     }
   </style>
 </head>
 <body>
-  <!-- Fundo animado de partículas -->
-  <canvas id="particles"></canvas>
+  <div class="card">
+    <!-- Área 5% → 50%: Slider de imagens -->
+    <div class="slider-area">
+      <div class="slider-container" id="slider">
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+1" alt="Image 1" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+2" alt="Image 2" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+3" alt="Image 3" />
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/300x200/1a1325/ffffff?text=Image+4" alt="Image 4" />
+        </div>
+      </div>
+    </div>
 
-  <!-- Conteúdo principal -->
-  <div class="container">
-    <h1>Automate with n8n</h1>
-    <p>Pre-built, battle-tested n8n workflows for creators, agencies, and solopreneurs.</p>
-    <p>No coding. Just import, configure, and run.</p>
+    <!-- Área 50% → 60%: Nome do workflow -->
+    <div class="name-area">
+      NOME DO WORKFLOW
+    </div>
 
-    <!-- Botão único: View Gallery -->
-    <a href="/workflows.html" class="btn">Explore Workflows</a>
+    <!-- Área 60% → 85%: Descrição do workflow -->
+    <div class="desc-area">
+      BREVE DESCRIÇÃO DO FLOW
+    </div>
+
+    <!-- Área 85% → 95%: Botões -->
+    <div class="btn-area">
+      <a href="#" class="btn-small">Starter Pack R$149</a>
+      <a href="#" class="btn-small">Full Setup R$399</a>
+    </div>
   </div>
 
-  <!-- Script das partículas -->
+  <!-- Script do slider animado -->
   <script>
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('slider');
+    const slides = Array.from(slider.children);
+    let currentIndex = 0;
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particleCount = 70;
-    const particles = [];
-    const particleProps = {
-      radius: { min: 1.2, max: 2.5 },
-      speed: { min: 0.1, max: 0.6 },
-      primaryColor: '#88d3ce',
-      secondaryColor: '#6e45e2',
-      connectDistance: 120,
-      connectionOpacity: 0.25,
-    };
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * particleProps.speed.max;
-        this.vy = (Math.random() - 0.5) * particleProps.speed.max;
-        this.radius = Math.random() * (particleProps.radius.max - particleProps.radius.min) + particleProps.radius.min;
-        this.color = Math.random() > 0.5 ? particleProps.primaryColor : particleProps.secondaryColor;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
+    function showSlide(index) {
+      const slideWidth = slider.offsetWidth;
+      slider.style.transform = `translateX(-${index * slideWidth}px)`;
     }
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
     }
 
-    function animate() {
-      ctx.fillStyle = '#0f0c14';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Inicia o slider
+    setInterval(nextSlide, 3000); // 3 segundos por imagem
 
-      particles.forEach(p => p.update());
-      particles.forEach(p => p.draw());
-
-      ctx.strokeStyle = `rgba(104, 69, 226, ${particleProps.connectionOpacity})`;
-      ctx.lineWidth = 1;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < particleProps.connectDistance) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
+    // Ajusta o slider quando a janela é redimensionada
+    window.addEventListener('resize', () => {
+      showSlide(currentIndex);
+    });
   </script>
 </body>
 </html>
